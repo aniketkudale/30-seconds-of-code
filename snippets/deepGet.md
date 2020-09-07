@@ -10,7 +10,11 @@ Use `Array.prototype.reduce()` to get value from nested JSON object one by one.
 If the key exists in object, return target value, otherwise, return `null`.
 
 ```js
-const deepGet = (obj, keys) => keys.reduce((xs, x) => (xs && xs[x] ? xs[x] : null), obj);
+const deepGet = (obj, keys) =>
+  keys.reduce(
+    (xs, x) => (xs && xs[x] !== null && xs[x] !== undefined ? xs[x] : null),
+    obj
+  );
 ```
 
 ```js
